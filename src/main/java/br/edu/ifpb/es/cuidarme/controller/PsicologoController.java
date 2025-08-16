@@ -24,9 +24,5 @@ public class PsicologoController {
         }
         return null;
     }
-
-    public static List<Psicologo> listarTodos() {
-        return psicologos;
-    }
 }
 

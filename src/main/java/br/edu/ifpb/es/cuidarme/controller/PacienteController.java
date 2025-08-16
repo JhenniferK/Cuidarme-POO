@@ -44,11 +44,11 @@ public class PacienteController {
         return false;
     }
 
-    public static Paciente getPacienteLogado(){
+    public static Paciente getPacienteLogado() {
         return pacienteLogado;
     }
 
-    public static Paciente deslogarPaciente(){
+    public static Paciente deslogarPaciente() {
         pacienteLogado = null;
         System.out.println("Paciente deslogado com sucesso!");
         return null;

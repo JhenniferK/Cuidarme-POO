@@ -25,8 +25,7 @@ public class MenuLogadoView {
             System.out.println("2. Agendamentos");
             System.out.println("3. Prontuários");
             System.out.println("4. Pagamentos");
-
-                            System.out.println("0. Sair");
+            System.out.println("0. Sair");
             System.out.print("Escolha uma opção: ");
 
             String opcao = scanner.nextLine();
@@ -35,18 +34,23 @@ public class MenuLogadoView {
                 case "1":
                     menuPacientes();
                     break;
+
                 case "2":
                     menuAgendamento();
                     break;
+
                 case "3":
                     menuProntuarios();
                     break;
+
                 case "4":
                     menuPagamentos();
                     break;
+
                 case "0":
                     System.out.println("Saindo do menu do psicólogo...");
                     return;
+
                 default:
                     System.out.println("Opção inválida.");
             }
@@ -81,6 +85,7 @@ public class MenuLogadoView {
                     System.out.println("ERRO: Paciente com o CPF informado não foi encontrado");
                     break;
                 }
+
                 String novoNome = lerTextoPuro("Novo nome (ou ENTER para manter): ");
 
                 LocalDate novaDataNasc = lerDataOpcional("Nova data de nascimento (AAAA-MM-DD): ");
@@ -101,6 +106,7 @@ public class MenuLogadoView {
                         "Mestrado",
                         "Doutorado",
                         "Pós-Doutorado");
+
                 String grauEscolaridade = lerOpcaoDeLista("Novo grau de escolaridade (ou ENTER para manter): ", novoGrauEscolaridade);
 
                 String novaProfissao = lerTextoPuro("Nova profissão (ou ENTER para manter): ");
@@ -108,6 +114,7 @@ public class MenuLogadoView {
                 String novoTelPessoal = lerApenasNumeros("Novo telefone pessoal (ou ENTER para manter): ");
 
                 Endereco novoEndPessoal = null;
+
                 System.out.print("Deseja alterar endereço pessoal? (s/n): ");
                 if (scanner.nextLine().equalsIgnoreCase("s")) {
                     System.out.println("Digite o novo endereço pessoal:");
@@ -160,6 +167,7 @@ public class MenuLogadoView {
             case "3":
                 cadastrarNovoPaciente();
                 break;
+
             case "4":
                 String cpfLogin = lerApenasNumeros("Digite o CPF do paciente para iniciar a sessão: ");
                 boolean sucessoLogin = PacienteController.loginPaciente(cpfLogin);
@@ -170,6 +178,7 @@ public class MenuLogadoView {
                     System.out.println("ERRO: Paciente com o CPF informado não foi encontrado.");
                 }
                 break;
+
             case "5":
                 Paciente pacienteSessao = PacienteController.getPacienteLogado();
                 if (pacienteSessao == null) {
@@ -189,6 +198,7 @@ public class MenuLogadoView {
 
     private static void cadastrarNovoPaciente() {
         System.out.println("\n--- Cadastro de Paciente ---");
+
         String cpf;
         while(true){
             cpf = lerApenasNumeros("CPF (digite apenas números): ");
@@ -200,6 +210,7 @@ public class MenuLogadoView {
         }
 
         String nome = lerTextoPuro("Nome: ");
+
         String rg = lerApenasNumeros("RG: (apenas números): ");
 
         LocalDate nascimento = lerDataObrigatoria("Data de nascimento (AAAA-MM-DD): ");
@@ -207,6 +218,7 @@ public class MenuLogadoView {
             System.out.println("Cadastro cancelado devido a data e nascimento inválida");
             return;
         }
+
         List<String> sexos = Arrays.asList("Feminino", "Masculino", "Outro");
         String sexo = lerOpcaoDeLista("Sexo: ", sexos);
 
@@ -224,7 +236,6 @@ public class MenuLogadoView {
                 "Doutorado",
                 "Pós-Doutorado");
         String grauEscolaridade =lerOpcaoDeLista("Grau de escolaridade: ", grauDeEscolaridade);
-
         String profissao = lerTextoPuro("Profissão: ");
         String tel = lerApenasNumeros("Telefone pessoal (apenas números): ");
 
