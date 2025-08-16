@@ -4,6 +4,7 @@ import br.edu.ifpb.es.cuidarme.controller.PsicologoController;
 import br.edu.ifpb.es.cuidarme.model.Psicologo;
 
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class MenuView {
 
@@ -36,8 +37,7 @@ public class MenuView {
 
     private static void cadastrarPsicologo() {
         System.out.println("\n--- Cadastro de Psicólogo ---");
-        System.out.print("Nome: ");
-        String nome = scanner.nextLine();
+        String nome = lerTextoPuro("Nome: ");
         System.out.print("Email: ");
         String email = scanner.nextLine();
         System.out.print("Senha: ");
@@ -62,6 +62,19 @@ public class MenuView {
             MenuLogadoView.exibirMenuLogado(p);
         } else {
             System.out.println("Email ou senha incorretos.");
+        }
+    }
+
+    private static String lerTextoPuro(String prompt) {
+        Pattern pattern = Pattern.compile("^[\\p{L}\\s.,'-]+$");
+        while (true) {
+            System.out.print(prompt);
+            String input = scanner.nextLine();
+            if (pattern.matcher(input).matches()) {
+                return input;
+            } else {
+                System.out.println("ERRO: Entrada inválida. Use apenas letras e espaços.");
+            }
         }
     }
 }

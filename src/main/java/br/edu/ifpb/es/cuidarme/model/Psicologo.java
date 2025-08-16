@@ -1,7 +1,7 @@
 package br.edu.ifpb.es.cuidarme.model;
 
 public class Psicologo {
-    private int id;
+    private final long id;
     private String nome;
     private String email;
     private String senha;
@@ -12,11 +12,9 @@ public class Psicologo {
         this.email = email;
         this.senha = senha;
     }
-
-    public int getId() {
+    public Long getId(){
         return id;
     }
-
     public String getNome() {
         return nome;
     }

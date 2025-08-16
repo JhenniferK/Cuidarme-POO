@@ -11,9 +11,11 @@ import java.util.stream.Collectors;
 public class PagamentoController {
 
     private static List<Pagamento> pagamentos = new ArrayList<>();
+    private static long idCounter = 1;
 
-    public static void registrar(Paciente paciente, LocalDate data, Pagamento.Metodo metodo, Pagamento.Status status) {
-        pagamentos.add(new Pagamento(paciente, data, metodo, status));
+
+    public static void registrar( Paciente paciente, Integer valor, LocalDate data, Pagamento.Metodo metodo, Pagamento.Status status) {
+        pagamentos.add(new Pagamento(idCounter++, paciente, valor, data, metodo, status));
     }
 
     public static List<Pagamento> listarTodos() {

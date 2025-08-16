@@ -3,7 +3,7 @@ package br.edu.ifpb.es.cuidarme.model;
 import java.time.LocalDate;
 
 public class Paciente {
-    private int id;
+    private final long id;
     private String nome;
     private String cpf;
     private String rg;
@@ -36,11 +36,9 @@ public class Paciente {
         this.infoAdicionais = infoAdicionais;
         this.contatoEmergencia = contatoEmergencia;
     }
-
-    public int getId() {
+    public Long getId(){
         return id;
     }
-
     public String getNome() {
         return nome;
     }

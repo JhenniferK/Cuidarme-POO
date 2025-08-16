@@ -6,22 +6,24 @@ public class Pagamento {
     public enum Metodo { PIX, CARTAO_DEBITO, CARTAO_CREDITO, BOLETO, DINHEIRO }
     public enum Status { PAGO, PENDENTE }
 
-    private static final double VALOR_FIXO = 100.00;
-
+    private final long id;
     private Paciente paciente;
+    private Integer valor;
     private LocalDate data;
     private Metodo metodo;
     private Status status;
 
-    public Pagamento(Paciente paciente, LocalDate data, Metodo metodo, Status status) {
+    public Pagamento(Long id, Paciente paciente, Integer valor, LocalDate data, Metodo metodo, Status status) {
+        this.id = id;
         this.paciente = paciente;
+        this.valor = valor;
         this.data = data;
         this.metodo = metodo;
         this.status = status;
     }
 
-    public double getValor() {
-        return VALOR_FIXO;
+    public Integer getValor() {
+        return valor;
     }
 
     public Paciente getPaciente() {
@@ -30,6 +32,10 @@ public class Pagamento {
 
     public void setPaciente(Paciente paciente) {
         this.paciente = paciente;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public LocalDate getData() {
@@ -50,6 +56,6 @@ public class Pagamento {
 
     @Override
     public String toString() {
-        return "Pagamento de R$" + VALOR_FIXO + " em " + data + " via " + metodo + " - Status: " + status;
+        return "Pagamento de R$" + valor + " em " + data + " via " + metodo + " - Status: " + status;
     }
 }

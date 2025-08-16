@@ -11,9 +11,11 @@ import java.util.stream.Collectors;
 public class AgendamentoController {
 
     private static List<Agendamento> agendamentos = new ArrayList<>();
+    private static long idCounter = 1;
+
 
     public static void agendar(Paciente paciente, LocalDate data, String horario, String local, Agendamento.Status status) {
-        agendamentos.add(new Agendamento(paciente, data, horario, local, status));
+        agendamentos.add(new Agendamento(idCounter++, paciente, data, horario, local, status));
     }
 
     public static List<Agendamento> listarTodos() {

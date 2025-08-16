@@ -9,9 +9,11 @@ import java.util.List;
 public class ProntuarioController {
 
     private static List<Prontuario> prontuarios = new ArrayList<>();
+    private static long idCounter = 1;
+
 
     public static void criarProntuarioPara(Paciente paciente) {
-        prontuarios.add(new Prontuario(paciente));
+        prontuarios.add(new Prontuario(idCounter++, paciente));
     }
 
     public static Prontuario buscarPorCpf(String cpf) {
@@ -24,8 +26,21 @@ public class ProntuarioController {
     public static boolean adicionarAnotacao(String cpf, String anotacao) {
         Prontuario prontuario = buscarPorCpf(cpf);
         if (prontuario != null) {
-            prontuario.adicionarAnotacao(anotacao);
+            prontuario.getAnotacoes().add(anotacao);
             return true;
+        }
+        return false;
+    }
+
+    public static boolean editarAnotacao(String cpf, String anotacaoAntiga, String novaAnotacao){
+        Prontuario prontuario = buscarPorCpf(cpf);
+        if(prontuario != null) {
+            List<String> anotacoes = prontuario.getAnotacoes();
+            int index = anotacoes.indexOf(anotacaoAntiga);
+            if(index != -1){
+                anotacoes.set(index, novaAnotacao);
+                return true;
+            }
         }
         return false;
     }

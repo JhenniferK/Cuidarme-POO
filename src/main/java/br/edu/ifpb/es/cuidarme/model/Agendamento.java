@@ -6,18 +6,24 @@ public class Agendamento {
 
     public enum Status { AGENDADO, CANCELAR, REMARCAR }
 
+    private final long id;
     private Paciente paciente;
     private LocalDate data;
     private String horario;
     private String local;
     private Status status;
 
-    public Agendamento(Paciente paciente, LocalDate data, String horario, String local, Status status) {
+    public Agendamento(Long id, Paciente paciente, LocalDate data, String horario, String local, Status status) {
+        this.id = id;
         this.paciente = paciente;
         this.data = data;
         this.horario = horario;
         this.local = local;
         this.status = status;
+    }
+
+    public Long getId(){
+        return id;
     }
 
     public Paciente getPaciente() {
